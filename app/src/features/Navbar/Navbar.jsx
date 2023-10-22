@@ -13,8 +13,8 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className={styles.nav_flexbox} >
-        <NavLink to="/signin" className={styles.no_decoration}>
-          <li>Sign in</li>
+        <NavLink to="/login" className={styles.no_decoration}>
+          <li>Log in</li>
         </NavLink>
         <NavLink to="/signup" className={styles.no_decoration}>
           <li>Sign up</li>

@@ -6,23 +6,46 @@ const createUser = async (req, res) => {
   let existingUser;
 
   try {
-    existingUser = await User.findOne({ email: email });
+    existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      res.status(400).json({ message: "User already exists !" });
+      return res.status(400).json({ message: "User already exists !" });
     } else {
-      const newUser = await User.create({
-        name: name,
-        email: email,
-        password: password,
-        location: location,
-      });
-      res.status(201).json({ id: newUser._id, created: true });
+      try {
+        const newUser = await User.create({
+          name,
+          email,
+          password,
+          location,
+        });
+        return res.status(201).json({ id: newUser._id, created: true });
+      } catch (error) {
+        return res.status(400).json({ error: error.message });
+      }
     }
   } catch (error) {
     console.log(error);
-    res.status(400).json(error);
+    return res.status(400).json(error);
   }
 };
 
-export { createUser };
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ errors: "invalid user !" });
+    }
+
+    if (password !== user.password) {
+      return res.status(400).json({ errors: "invalid credentials !" });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error);
+  }
+};
+
+export { createUser, loginUser };

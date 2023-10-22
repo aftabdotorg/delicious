@@ -1,27 +1,29 @@
+import { NavLink, useNavigate } from "react-router-dom";
+import "./Auth.css";
 import { useState } from "react";
 import axios from "axios";
-import "./Auth.css";
-import { NavLink } from "react-router-dom";
 
-const Signup = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({
-    name: "",
     email: "",
-    location: "",
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(credentials);
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/users/signup",
+        "http://localhost:8080/api/users/login",
         credentials
       );
-      console.log("Sign-up successful:", response.data);
+      console.log("Login successful:", response.data);
+      navigate("/");
     } catch (error) {
       if (error.response) {
-        console.error("Sign-up failed:", error.response.data);
+        console.error("Login failed:", error.response.data);
       }
     }
   };
@@ -33,15 +35,8 @@ const Signup = () => {
 
   return (
     <>
-      <h2 className="auth_heading">Join Delicious</h2>
+      <h2 className="auth_heading">Log in</h2>
       <form className="form_container" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="enter name"
-          onChange={handleChange}
-          name="name"
-          value={credentials.name}
-        />
         <input
           type="email"
           placeholder="enter email"
@@ -56,22 +51,15 @@ const Signup = () => {
           name="password"
           value={credentials.password}
         />
-        <input
-          type="text"
-          placeholder="enter location"
-          onChange={handleChange}
-          name="location"
-          value={credentials.location}
-        />
-        <input type="submit" value="Sign up" />
+        <input type="submit" value="Log in" />
         <p>
-          Already a member?{" "}
-          <NavLink to="/login" className="no_decoration_links">
-            Log in 
+          New to Delicious?{" "}
+          <NavLink to="/signup" className="no_decoration_links">
+            Sign up
           </NavLink>{" "}
         </p>
       </form>
     </>
   );
 };
-export default Signup;
+export default Login;
