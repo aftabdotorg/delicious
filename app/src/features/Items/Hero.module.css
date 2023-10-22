@@ -16,16 +16,13 @@
 }
 
 .search_container {
-  /* width: 100%; */
   border-radius: 5px;
-  /* max-width: 600px; */
   display: flex;
   align-items: center;
   background-color: white;
-  /* border: 3px solid white; */
   gap: 1rem;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
 }
 
 .search_container input {

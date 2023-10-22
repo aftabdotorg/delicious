@@ -1,12 +1,13 @@
-import Card from "../features/Card/Card";
-import Hero from "../features/Hero/Hero";
+import Items from "../features/Items/Items";
+
 
 const HomePage = () => {
   return (
-    <>
-      <Hero />
-      <Card />
-    </>
+    <div style={{
+      paddingBottom: "5rem",
+    }}> 
+      <Items />
+    </div>
   );
 };
 export default HomePage;

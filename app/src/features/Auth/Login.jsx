@@ -19,7 +19,8 @@ const Login = () => {
         "http://localhost:8080/api/users/login",
         credentials
       );
-      console.log("Login successful:", response.data);
+      localStorage.setItem("authToken", response.data.authToken);
+      console.log(localStorage.getItem("authToken"));
       navigate("/");
     } catch (error) {
       if (error.response) {

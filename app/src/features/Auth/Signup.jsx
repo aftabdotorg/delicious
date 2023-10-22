@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./Auth.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [credentials, setCredentials] = useState({
@@ -11,6 +11,8 @@ const Signup = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -18,6 +20,7 @@ const Signup = () => {
         "http://localhost:8080/api/users/signup",
         credentials
       );
+      navigate("/login");
       console.log("Sign-up successful:", response.data);
     } catch (error) {
       if (error.response) {
@@ -67,7 +70,7 @@ const Signup = () => {
         <p>
           Already a member?{" "}
           <NavLink to="/login" className="no_decoration_links">
-            Log in 
+            Log in
           </NavLink>{" "}
         </p>
       </form>

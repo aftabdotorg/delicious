@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  height: calc(100vh-50vh);
   /* border: 1px solid black; */
 }
 

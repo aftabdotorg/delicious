@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   border: 2px solid palevioletred;
+  margin: auto;
 }
 
 .card_thumbnail {
@@ -26,6 +27,9 @@
 .card_description {
   margin: 0;
   /* border: 1px solid black; */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .card_title {
@@ -34,7 +38,7 @@
 }
 
 .card_dropdown_container {
-  width: 100px;
+  width: 120px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -50,8 +54,6 @@
 .card_dropdown_container select option {
   font-weight: 500;
 }
-
-
 
 .card_container button {
   outline: none;

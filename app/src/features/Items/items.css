@@ -1,0 +1,21 @@
+.items_flex {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+  /* border: 1px solid black; */
+}
+
+
+.category_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: darkslategray;
+    font-weight: 500;
+    background-color: rgb(255, 224, 234);
+}

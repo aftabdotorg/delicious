@@ -1,15 +1,15 @@
+/* eslint-disable react/prop-types */
 import styles from "./Card.module.css";
 
-const Card = () => {
+const Card = ({ name, img, options, description }) => {
+
+  const prices = Object.keys(options)
+  console.log(prices);
   return (
     <div className={styles.card_container}>
-      <img
-        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=962&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="thumbnail"
-        className={styles.card_thumbnail}
-      />
-      <h3 className={styles.card_title}>Title</h3>
-      <p className={styles.card_description}>description</p>
+      <img src={img} className={styles.card_thumbnail} />
+      <h3 className={styles.card_title}>{name}</h3>
+      <p className={styles.card_description}>{description}</p>
       <div className={styles.card_infoflex}>
         <div className={styles.card_dropdown_container}>
           <select>
@@ -23,8 +23,9 @@ const Card = () => {
           </select>
 
           <select>
-            <option value="half">Half</option>
-            <option value="full">Full</option>
+            {prices.map((ele) => (
+              <option key={ele} value={ele}>{ele}</option>
+            ))}
           </select>
         </div>
         <div className={styles.card_price_container}>₹ 200</div>
