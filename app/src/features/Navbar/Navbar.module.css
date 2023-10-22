@@ -1,0 +1,39 @@
+.nav_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3rem;
+  padding: 0.5rem 0;
+  /* border: 1px solid red; */
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  /* box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
+}
+
+.nav_flexbox {
+  height: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.nav_flexbox li {
+  height: 100%;
+  border-radius: 5px;
+  background-color: palevioletred;
+  border: none;
+  color: white;
+  padding: 0.2rem 0.7rem;
+  /* border: 1px solid blue; */
+  list-style-type: none;
+  text-transform: uppercase;
+}
+
+#logo_box{
+  background-color: maroon;
+  font-weight: 600;
+}
+
+.no_decoration {
+  text-decoration: none;
+}
