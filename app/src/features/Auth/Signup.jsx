@@ -20,8 +20,18 @@ const Signup = () => {
         "http://localhost:8080/api/users/signup",
         credentials
       );
-      navigate("/login");
-      console.log("Sign-up successful:", response.data);
+      if (response.data.status === 202) {
+        alert(response.data.message);
+        setCredentials({
+          name: "",
+          email: "",
+          location: "",
+          password: "",
+        });
+      } else {
+        navigate("/login");
+        console.log("Sign-up successful:", response);
+      }
     } catch (error) {
       if (error.response) {
         console.error("Sign-up failed:", error.response.data);

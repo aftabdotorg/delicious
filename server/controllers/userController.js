@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
 const createUser = async (req, res) => {
   const { name, email, password, location } = req.body;
@@ -8,7 +8,8 @@ const createUser = async (req, res) => {
   try {
     existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: "User already exists !" });
+      return res.send({ status: 202, message: "User already exists!" });
+
     } else {
       const salt = await bcrypt.genSalt(10);
       let hashedPassword = await bcrypt.hash(password, salt);
@@ -19,7 +20,7 @@ const createUser = async (req, res) => {
           password: hashedPassword,
           location,
         });
-        return res.status(201).json({ id: newUser._id, created: true });
+        return res.send({ status: 201, id: newUser._id, created: true });
       } catch (error) {
         return res.status(400).json({ error: error.message });
       }
@@ -51,7 +52,7 @@ const loginUser = async (req, res) => {
       },
     };
 
-    const authToken = jwt.sign(dataObj, process.env.JWT_SECRET)
+    const authToken = jwt.sign(dataObj, process.env.JWT_SECRET);
 
     return res.status(200).json({ success: true, authToken: authToken });
   } catch (error) {

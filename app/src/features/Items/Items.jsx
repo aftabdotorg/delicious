@@ -32,6 +32,9 @@ const Items = () => {
     fetchCategories();
   }, []);
 
+
+
+
   return (
     <>
       <header className={styles.hero_container}>
@@ -42,7 +45,6 @@ const Items = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          {/* <button type="submit">Search</button> */}
         </form>
       </header>
       <div>
@@ -59,6 +61,7 @@ const Items = () => {
                 .map((ele) => (
                   <Card
                     key={ele._id}
+                    id={ele._id}
                     name={ele.name}
                     options={ele.options[0]}
                     img={ele.img}
