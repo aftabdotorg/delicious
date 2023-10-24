@@ -1,11 +1,25 @@
 import { useCartContext, useCartDispatch } from "../../Context/Context";
 import Styles from "./Cart.module.css";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Cart = () => {
   const CartItems = useCartContext();
   const dispatch = useCartDispatch();
+
+  const handleCheckout = async () => {
+    let email = localStorage.getItem("loggedInUser");
+    console.log("clicked");
+    let response = await axios.post("http://localhost:8080/api/orders", {
+      email: email,
+      order_data: CartItems,
+    });
+
+    console.log(response);
+  };
+
   const totalPrice = CartItems.reduce((sum, item) => sum + item.price, 0);
+
   return (
     <section className={Styles.cart_container}>
       <h1 className={Styles.cart_heading}>Cart</h1>
@@ -13,7 +27,9 @@ const Cart = () => {
         <NavLink to="/" className={Styles.no_link_deco}>
           <div className={Styles.cart_action_btn}>Back to products</div>
         </NavLink>
-        <div className={Styles.cart_action_btn}>Cart items ({CartItems.length})</div>
+        <div className={Styles.cart_action_btn}>
+          Cart items ({CartItems.length})
+        </div>
         <button
           className={Styles.cart_action_btn}
           onClick={() => {
@@ -65,7 +81,9 @@ const Cart = () => {
       </table>
 
       <center>
-        <button className={Styles.cart_checkout_btn}>Checkout</button>
+        <button className={Styles.cart_checkout_btn} onClick={handleCheckout}>
+          Checkout
+        </button>
       </center>
     </section>
   );
