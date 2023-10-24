@@ -16,13 +16,13 @@ const Card = ({ id, name, img, options, description }) => {
   const handleAddToCart = async () => {
     await dispatch({ type: "ADD", id, name, img, qty, size, price });
   };
-  
+
   let price = qty * parseInt(options[size]);
-  
+
   useEffect(() => {
     setSize(priceRef.current.value);
   }, []);
-  
+
   console.log(cartState);
   return (
     <div className={styles.card_container}>

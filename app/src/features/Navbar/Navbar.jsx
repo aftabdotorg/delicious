@@ -1,13 +1,16 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import { useCartContext } from "../../Context/Context";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
+  const Cartitems = useCartContext();
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     navigate("/login");
   };
+
+  console.log(Cartitems.length);
 
   return (
     <nav className={styles.nav_container}>
@@ -37,8 +40,8 @@ const Navbar = () => {
         </div>
       ) : (
         <div className={styles.nav_flexbox}>
-          <NavLink to="/login" className={styles.no_decoration}>
-            <li>Cart</li>
+          <NavLink to="/cart" className={styles.no_decoration}>
+            <li>Cart ({Cartitems.length})</li>
           </NavLink>
 
           <NavLink

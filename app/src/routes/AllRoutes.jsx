@@ -4,6 +4,7 @@ import Navbar from "../features/Navbar/Navbar";
 import Footer from "../features/Footer/Footer";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
+import CartPage from "../pages/CartPage";
 
 const AllRoutes = () => {
   return (
@@ -11,8 +12,9 @@ const AllRoutes = () => {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/login" element={<LoginPage />} />
-        <Route exact path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
     </>

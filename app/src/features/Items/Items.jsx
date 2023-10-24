@@ -32,9 +32,6 @@ const Items = () => {
     fetchCategories();
   }, []);
 
-
-
-
   return (
     <>
       <header className={styles.hero_container}>
