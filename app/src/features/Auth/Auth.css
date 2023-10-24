@@ -28,6 +28,7 @@
   color: white;
   text-transform: uppercase;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .auth_heading {

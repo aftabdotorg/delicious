@@ -20,6 +20,14 @@ const reducer = (state, action) => {
         },
       ];
 
+    case "REMOVE":
+      let newArr = [...state];
+      newArr.splice(action.index, 1);
+      return newArr;
+
+    case "CLEAR":
+      return [];
+
     default:
       console.log("Error in Reducer");
   }

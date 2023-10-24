@@ -57,3 +57,13 @@
   cursor: pointer;
   margin-top: 1rem;
 }
+
+#delete_icon{
+  cursor: pointer;
+  color: maroon;
+}
+
+
+.no_link_deco{
+  text-decoration: none;
+}
